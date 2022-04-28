@@ -11,5 +11,8 @@ docker stop $cid
 echo "Removing container..."
 docker rm $cid
 
+echo "Rebuilding image..."
+docker build -t $iname .
+
 echo "Rerunning container..."
 docker run -d -p 8080:8080 $iname
