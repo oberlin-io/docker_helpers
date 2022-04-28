@@ -1,0 +1,7 @@
+#!/bin/bash
+
+iname=my_image_name
+
+cid=$(docker container ls |grep $iname |awk '{print $1}')
+
+docker logs $cid

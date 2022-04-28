@@ -1,0 +1,15 @@
+#!/bin/bash
+
+iname=my_image_name
+
+cid=$(docker container ls |grep $iname |awk '{print $1}')
+echo "Found container $cid for $iname"
+
+echo "Stopping container..."
+docker stop $cid
+
+echo "Removing container..."
+docker rm $cid
+
+echo "Rerunning container..."
+docker run -d -p 8080:8080 $iname
